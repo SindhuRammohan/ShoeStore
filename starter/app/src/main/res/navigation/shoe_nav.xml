@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/show_nav"
+    app:startDestination="@id/loginDestination">
+    <fragment
+        android:id="@+id/loginDestination"
+        android:name="com.udacity.shoestore.LoginFragment"
+        android:label="login_fragment"
+        tools:layout="@layout/login_fragment">
+        <action
+            android:id="@+id/actionLoginToWelcome"
+            app:destination="@id/welcomeScreenDestination" />
+    </fragment>
+    <fragment
+        android:id="@+id/welcomeScreenDestination"
+        android:name="com.udacity.shoestore.WelcomeFragment"
+        android:label="WelcomeFragment"
+        tools:layout="@layout/welcome_fragment" >
+        <action
+            android:id="@+id/actionWelcomeToInstructions"
+            app:destination="@id/InstructionDestination" />
+    </fragment>
+    <fragment
+        android:id="@+id/InstructionDestination"
+        android:name="com.udacity.shoestore.InstructionFragment"
+        android:label="InstructionFragment"
+        tools:layout="@layout/instruction_fragment" >
+        <action
+            android:id="@+id/actionInstructiontoshoeList"
+            app:destination="@id/shoeListDestination" />
+    </fragment>
+    <fragment
+        android:id="@+id/shoeListDestination"
+        android:name="com.udacity.shoestore.ShoeListFragment"
+        android:label="ShoeListFragment"
+        tools:layout="@layout/shoelist_fragment" >
+        <action
+            android:id="@+id/actionShoeListingsToShoeDetails"
+            app:destination="@id/shoeDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/shoeDetailsFragment"
+        android:name="com.udacity.shoestore.AddShoeDetailsFragment"
+        android:label="ShoeDetailsFragment" >
+        <action
+            android:id="@+id/actionShoeDetailsToShoeListings"
+            app:destination="@id/shoeListDestination" />
+    </fragment>
+</navigation>
