@@ -14,75 +14,14 @@ class ShoeListViewModel : ViewModel() {
 
     var shoe = Shoe(
         "",
-        0,
         "",
         "",
-        0
+        ""
     )
 
-    // Login ----------
-    private val _eventLoginMade = MutableLiveData(false)
-    val eventLoginMade: LiveData<Boolean>
-        get() = _eventLoginMade
-    // ----------------
 
-    // Welcome --------
-    private val _eventNextWelcomePress = MutableLiveData(false)
-    val eventNextWelcomePress: LiveData<Boolean>
-        get() = _eventNextWelcomePress
-    // ---------------
 
-    // Instruction -------------
-    private val _eventNextInstructionPress = MutableLiveData(false)
-    val eventNextInstructionPress: LiveData<Boolean>
-        get() = _eventNextInstructionPress
-    // -------------------------
 
-    // Instructions Detail ------
-    private val _eventNextInstructionDetailPress = MutableLiveData(false)
-    val eventNextInstructionDetailPress: LiveData<Boolean>
-        get() = _eventNextInstructionDetailPress
-    // --------------------------
-
-    // Login ------------
-    fun goToWelcomeStart() {
-        _eventLoginMade.value = true
-    }
-
-    fun goToWelcomeComplete() {
-        _eventLoginMade.value = false
-    }
-    // ------------------
-
-    // Instructions ----
-    fun goToInstructionDetailStart() {
-        _eventNextInstructionPress.value = true
-    }
-
-    fun goToInstructionDetailComplete() {
-        _eventNextInstructionPress.value = false
-    }
-    // -----------------
-
-    // Instructions Details --------
-    fun goToShoeListStart() {
-        _eventNextInstructionDetailPress.value = true
-    }
-
-    fun goToShoeListComplete() {
-        _eventNextInstructionDetailPress.value = false
-    }
-    // -----------------------------
-
-    // Welcome ----------
-    fun goToInstructionStart() {
-        _eventNextWelcomePress.value = true
-    }
-
-    fun goToInstructionComplete() {
-        _eventNextWelcomePress.value = false
-    }
-    // ------------------
 
     //Shoes List -----------
     private var _shoesList = MutableLiveData<MutableList<Shoe>>(mutableListOf())
@@ -104,16 +43,6 @@ class ShoeListViewModel : ViewModel() {
     private val _eventCancelShoeDetailPress = MutableLiveData(false)
     val eventCancelShoeDetailPress: LiveData<Boolean>
         get() = _eventCancelShoeDetailPress
-
-    //shoe picture
-    private val _eventPictureShoeDetailPress = MutableLiveData<String>()
-    val eventPictureShoeDetailPress: LiveData<String>
-        get() = _eventPictureShoeDetailPress
-
-    //size
-    private val _eventSizeViewShoeDetailPress = MutableLiveData<View>()
-    val eventSizeViewShoeDetailPress: LiveData<View>
-        get() = _eventSizeViewShoeDetailPress
 
     //missing name shoe
     private val _eventSaveFailByNameShoeDetail = MutableLiveData(false)
@@ -150,8 +79,7 @@ class ShoeListViewModel : ViewModel() {
             shoe.name.trim().isEmpty() -> {
                 _eventSaveFailByNameShoeDetail.value = true
             }
-            shoe.size <= 0.9 -> {
-                Log.d("Sindhu","q"+ shoe.size)
+            shoe.size .trim().isEmpty() -> {
                 _eventSaveFailBySizeShoeDetail.value = true
             }
             else -> {
@@ -186,19 +114,6 @@ class ShoeListViewModel : ViewModel() {
         _eventCancelShoeDetailPress.value = false
     }
 
-    fun setSize(view: View, size: Int) {
-        _eventSizeViewShoeDetailPress.value = view
-        shoe.size = size
-    }
-
-    fun changeShoePicture() {
-        shoe.modelShoe++
-        if (shoe.modelShoe >= shoe.modelsAvailable.size) {
-            shoe.modelShoe = 0
-        }
-        _eventPictureShoeDetailPress.value = shoe.modelsAvailable[shoe.modelShoe]
-    }
-
     private fun saveNewShoe() {
         val list = _shoesList.value
         list?.let {
@@ -210,11 +125,9 @@ class ShoeListViewModel : ViewModel() {
     fun clearShoeTemplate() {
         shoe = Shoe(
             "",
-            0,
             "",
             "",
-            0
+            ""
         )
-        _eventPictureShoeDetailPress.value = shoe.modelsAvailable[shoe.modelShoe]
     }
 }

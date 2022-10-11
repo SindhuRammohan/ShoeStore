@@ -106,7 +106,7 @@
                     android:layout_weight="1"
                     android:ems="10"
                     android:hint="@string/enter_shoe_size"
-                    android:text="@{Integer.toString(detailShoeDetailViewModel.shoe.size)}"
+                    android:text="@={shoe.size}"
                     android:inputType="numberDecimal"
                     android:importantForAutofill="no" />
             </LinearLayout>

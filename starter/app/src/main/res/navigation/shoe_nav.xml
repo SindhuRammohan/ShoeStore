@@ -39,6 +39,9 @@
         <action
             android:id="@+id/actionShoeListingsToShoeDetails"
             app:destination="@id/shoeDetailsFragment" />
+        <action
+            android:id="@+id/actionShoeListingsToShoelogin"
+            app:destination="@id/loginDestination" />
     </fragment>
     <fragment
         android:id="@+id/shoeDetailsFragment"

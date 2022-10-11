@@ -31,9 +31,7 @@ class AddShoeDetailsFragment : Fragment() {
         initViewModel()
         initObservers()
 
-        changePictureShoeDetailPress("model_0")
-        (activity as AppCompatActivity).supportActionBar?.show()
-
+        (activity as AppCompatActivity).supportActionBar?.hide()
         return binding.root
     }
 
@@ -64,20 +62,8 @@ class AddShoeDetailsFragment : Fragment() {
             }
         })
 
-        viewModel.eventSizeViewShoeDetailPress.observe(viewLifecycleOwner, { view ->
-            view?.let {
-                clearSizeShoeDetail()
-                changeBackgroundSizeSelectedShoeDetail(view)
-            }
-        })
 
-        viewModel.eventPictureShoeDetailPress.observe(
-            viewLifecycleOwner,
-            { nameModelShoe ->
-                nameModelShoe?.let {
-                    changePictureShoeDetailPress(nameModelShoe)
-                }
-            })
+
 
         viewModel.eventSaveFailByNameShoeDetail.observe(viewLifecycleOwner, {
             if (it) {
@@ -111,29 +97,6 @@ class AddShoeDetailsFragment : Fragment() {
 
     private fun cancelShoeDetail() {
         findNavController().popBackStack()
-    }
-
-    private fun clearSizeShoeDetail() {
-//        binding.eightButton.setBackgroundResource(R.drawable.rounded_circle_disabled)
-//        binding.nineButton.setBackgroundResource(R.drawable.rounded_circle_disabled)
-//        binding.tenButton.setBackgroundResource(R.drawable.rounded_circle_disabled)
-//        binding.elevenButton.setBackgroundResource(R.drawable.rounded_circle_disabled)
-//        binding.twelveButton.setBackgroundResource(R.drawable.rounded_circle_disabled)
-    }
-
-    private fun changeBackgroundSizeSelectedShoeDetail(view: View) {
-//        view.setBackgroundResource(R.drawable.rounded_circle_enabled)
-    }
-
-    private fun changePictureShoeDetailPress(nameModelShoe: String) {
-        when (nameModelShoe) {
-//            "model_0" -> binding.imageShoe.setImageResource(R.drawable.model_0)
-//            "model_1" -> binding.imageShoe.setImageResource(R.drawable.model_1)
-//            "model_2" -> binding.imageShoe.setImageResource(R.drawable.model_2)
-//            "model_3" -> binding.imageShoe.setImageResource(R.drawable.model_3)
-//            "model_4" -> binding.imageShoe.setImageResource(R.drawable.model_4)
-//            "model_5" -> binding.imageShoe.setImageResource(R.drawable.model_5)
-        }
     }
 
     private fun showAlert(message: String) {

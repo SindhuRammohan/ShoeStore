@@ -38,7 +38,7 @@ class ShoeListFragment : Fragment() {
         initObservers()
 
         (activity as AppCompatActivity).supportActionBar?.show()
-//        (activity as AppCompatActivity).supportActionBar!!.setDisplayHomeAsUpEnabled(false)
+        (activity as AppCompatActivity).supportActionBar!!.setDisplayHomeAsUpEnabled(false)
 
         return binding.root
     }
@@ -49,7 +49,7 @@ class ShoeListFragment : Fragment() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        findNavController().navigate(R.id.actionShoeListingsToShoeDetails)
+        findNavController().navigate(R.id.actionShoeListingsToShoelogin)
         return super.onOptionsItemSelected(item)
     }
 
